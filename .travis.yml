@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 0.12
+  - 4.0
+  - 4.3
+  - 5.0
+  - 5.7
+  - 6.0
+  - 6.2
+install:
+  - npm install -g codecov
+  - npm install -g babel-cli
+  - npm install -g flow-bin
+  - npm install
+script:
+  - npm test
+  - flow check

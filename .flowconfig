@@ -11,7 +11,7 @@
 [libs]
 node_modules/point-one/flow/point-one.js
 node_modules/point-reducer-builder/flow/point-reducer-builder.js
-interfaces/
+interfaces
 
 [options]
 esproposal.class_static_fields=ignore

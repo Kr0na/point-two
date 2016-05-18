@@ -1,4 +1,5 @@
 # Point Two - Skeleton isomorphic application with hot-reload, react-router, point-one, express
+[![Build Status](https://travis-ci.org/Kr0na/point-two.svg?branch=master)](https://travis-ci.org/Kr0na/point-two)
 
 Point two is an skeleton for those who want to create isomorphic application w/t
 waste of time.
