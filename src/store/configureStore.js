@@ -26,7 +26,8 @@ export function configureStore(state: Object = {}, history: ?Object): Store {
     module.hot.accept('../reducer', () => {
       console.log('Updated reducer')
       const newReducer = require('../reducer/index').default
-      store.dangerously.replaceReducer(newReducer, true)
+      //For situations w/t reduxConverter included
+      store.replaceReducer ? store.replaceReducer(newReducer) : store.dangerously.replaceReducer(newReducer, true)
     })
   }
 
