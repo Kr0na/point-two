@@ -5,6 +5,7 @@ import WebpackDevServer from 'webpack-dev-server'
 import WebpackConfig from '../webpack/index'
 import Config from '../config/index'
 import ReactMiddleWare from './middleware/react'
+import {AUTH_SUCCESS, TODO_CREATE} from '../constants'
 
 const
   {
@@ -23,8 +24,35 @@ const
 
 app.use(Express.static(staticPath))
 app.use(ReactMiddleWare)
-app.get('*', req => {
-  req.renderMarkup()
+
+app.get('/unsafe', (req, res) => {
+  req.store.dispatch({
+    type: AUTH_SUCCESS,
+    data: {
+      id: 1,
+      login: 'admin'
+    },
+    token: {
+      token: 'asdfaf'
+    }
+  })
+  req.store.dispatch({
+    type: TODO_CREATE,
+    value: 'dddd'
+  })
+  req.store.dispatch({
+    type: TODO_CREATE,
+    value: 'cccc'
+  })
+  req.store.dispatch({
+    type: TODO_CREATE,
+    value: 'bbbb'
+  })
+  res.renderMarkup()
+})
+
+app.get('*', (req, res) => {
+  res.renderMarkup()
 })
 
 app.listen(instancePort, instanceHost)

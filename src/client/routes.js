@@ -1,6 +1,6 @@
 /**@flow*/
 import React from 'react'
-import {Route, IndexRoute} from 'react-router'
+import {Route, IndexRoute, Redirect} from 'react-router'
 import {pushPath} from 'point-simple-router'
 import type {Store} from '../types'
 import Register from './pages/guest/Register'
@@ -15,13 +15,13 @@ export function configureRoutes(store: Store): Array<React$Element> {
 
   const isAuthenticated = () => !!store.getState().auth.identity
   const auth = (params, transition, callback) => {
-    console.log(isAuthenticated(), transition.toString())
     isAuthenticated() ? callback() : redirect(params, transition, callback)
   }
 
   return [
     <Route key={0} path="/" onEnter={auth} component={Layout}>
       <IndexRoute component={TodoContainer} />
+      <Route path="/unsafe" component={TodoContainer} />
     </Route>,
     <Route key={1}>
       <Route path="/login" component={Login} />

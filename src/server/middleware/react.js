@@ -40,7 +40,7 @@ export default function handleRender(req: ExpressRequest, res: ExpressResponse, 
   const {configureStore} = require('../../store/configureStore')
   const {configureRoutes} = require('../../client/routes')
   req.store = configureStore({})
-  req.renderMarkup = () => {
+  res.renderMarkup = () => {
       // Note that req.url here should be the full URL path from
       // the original request, including the query string.
     match({ routes: configureRoutes(req.store), location: req.url }, (error, redirectLocation, renderProps) => {
